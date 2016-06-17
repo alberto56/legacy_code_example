@@ -1,2 +1,4 @@
 name = legacy code example
 core = 7.x
+
+files[] = src/LegacyCodeExample.php
