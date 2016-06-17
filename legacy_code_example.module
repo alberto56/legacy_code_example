@@ -49,6 +49,11 @@ function legacy_code_example_show_repos() {
     }
     else {
       $return = '<h1>' . $node->title . ' has ' . count($data) . ' repo(s)</h1>';
+      if (count($data) > 5) {
+        drupal_set_message('There are ' . count($data) . ' total repos, here are the first five:');
+        $data = array_splice($data, count($data) - 5);
+      }
+
       foreach ($data as $repo) {
         $return .= '<h2>' . $repo['full_name'] . '</h2>';
         $return .= '<p><a href="' . $repo['html_url'] . '">' . $repo['full_name'] . '</a>: ' . $repo['description'] . '</p>';
