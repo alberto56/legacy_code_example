@@ -7,9 +7,12 @@ class LegacyCodeExampleMock extends LegacyCodeExample {
   }
 
   function t($string, $args) {
-    // We are using an installation of phpunit that does not know Drupal at
-    // all, just return a string here.
-    return $string . ' ' . serialize($args);
+    // Reproduce t() becasue PHPUnit does not know about it.
+    $return = $string;
+    foreach ($args as $key => $value) {
+      $return = str_replace($key, $value, $return);
+    }
+    return $return;
   }
 
   function getLastMessage() {
