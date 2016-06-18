@@ -53,8 +53,17 @@ class LegacyCodeExample {
 
   function trimData(&$data) {
     if (count($data) > 5) {
-     $data = array_splice($data, count($data) - 5);
+      $this->drupalSetMessage($this->t('There are @count total repos, here are the first five:', array('@count' => count($data))));
+      $data = array_splice($data, count($data) - 5);
     }
+  }
+
+  function drupalSetMessage($message) {
+    return drupal_set_message($message);
+  }
+
+  function t($string, $args) {
+    return t($string, $args);
   }
 
 }
