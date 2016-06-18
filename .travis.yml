@@ -2,4 +2,4 @@ services:
   - docker
 
 script:
-  - ./scripts/test.sh
+  - ./scripts/unit-tests.sh
