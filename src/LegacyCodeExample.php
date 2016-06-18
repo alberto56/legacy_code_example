@@ -32,6 +32,7 @@ class LegacyCodeExample {
 
     if ($response->code == 200) {
       $data = drupal_json_decode($response->data);
+      $this->trimData($data);
 
       if ($data[0]['name'] == 'HelloWorld') {
         return 'No GitHub repo(s) available for ' . $node->title;
@@ -47,6 +48,12 @@ class LegacyCodeExample {
     }
     else {
       return 'Repo list not available for now; please check later.';
+    }
+  }
+
+  function trimData(&$data) {
+    if (count($data) > 5) {
+     $data = array_splice($data, count($data) - 5);
     }
   }
 
